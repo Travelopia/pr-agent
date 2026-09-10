@@ -1,1 +1,7 @@
-FROM pragent/pr-agent:github_action
+# Pinned to a released version, not the floating `github_action` tag. A consumer that pins this
+# repo by commit (`uses: Travelopia/pr-agent@<sha>`) expects that sha to fix the code that runs;
+# with the floating tag it fixed only this one-line wrapper and every run silently picked up
+# whatever upstream had released that week (ResEE PR #169: seven "Standalone PR Review" comments
+# from behaviour that did not exist at the pinned commit). Bump the version deliberately, in a commit.
+# Upstream releases roughly weekly: https://github.com/The-PR-Agent/pr-agent/releases
+FROM pragent/pr-agent:0.45.0-github_action
