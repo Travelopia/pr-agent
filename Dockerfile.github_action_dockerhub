@@ -1,1 +1,6 @@
-FROM pragent/pr-agent:github_action
+# Pinned by digest, not by the floating `github_action` tag. A consumer that pins this repo by
+# commit (`uses: Travelopia/pr-agent@<sha>`) expects that sha to fix the code that runs; with a
+# floating tag it fixed only this one-line wrapper and every run silently picked up whatever
+# upstream had published that day (ResEE PR #169: seven "Standalone PR Review" comments from a
+# behaviour that did not exist at the pinned commit). Bump the digest deliberately, in a commit.
+FROM pragent/pr-agent:github_action@sha256:548b760b81ab4b3f729182428695ccc1194bbf87528c2b1e2b2b07e5223af7b6
